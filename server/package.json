@@ -4,17 +4,17 @@
   "description": "clear frame for SPA+NODE",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production npm run client:build && node index.js",
+    "start": "cross-env NODE_ENV=production  node index.js",
     "server": "nodemon index.js",
-    "client": "npm run serve --prefix client",
-    "client:build": "npm run build --prefix client",
-    "client:install": "npm install --prefix client",
+    "client": "npm run serve --prefix ../client",
+    "client:build": "npm run build --prefix ../client",
+    "client:install": "npm install --prefix ../client",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
-    "spa",
-    "vue",
-    "node"
+    "SPA",
+    "vue.js",
+    "node.js"
   ],
   "author": "andrey.volovod <andrey.volovod@gmail.com>",
   "license": "ISC",

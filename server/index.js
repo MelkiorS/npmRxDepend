@@ -25,7 +25,8 @@ const PORT = process.env.PORT || 5050;
 async function start() {
     try {
          // start async function, like open DB connection
-          app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
+          app.listen(PORT, () =>
+              console.log(`App has been started on port ${PORT} in ${process.env.NODE_ENV} mode`));
     } catch (e) {
         console.log('Server Error', e.message);
         process.exit(1);
