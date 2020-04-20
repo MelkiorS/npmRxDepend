@@ -13,18 +13,24 @@ app.use('/api/v1/dependency', dependencyRoutes);
 
 if (process.env.NODE_ENV === 'production') {
     // Start folder
-    app.use('/', express.static(path.join(__dirname, 'client', 'dist')));
+    app.use('/', express.static(path.join(__dirname, 'dist')));
 
     // Handle SPA
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
     })
 }
 
 
 
 async function start() {
-    const PORT = process.env.PORT || 5050;
+let PORT = process.env.PORT || 5000;
+
+/*    if(process.env.NODE_ENV === 'development'){
+        PORT = 5000;
+    } else {
+        PORT = process.env.PORT || 5050;
+    }*/
     try {
          // start async function, like open DB connection
           app.listen(PORT, () =>
