@@ -8,6 +8,8 @@ const app = express();
 app.use(express.json({ extended: true }));
 app.use(cors());
 
+const dependencyRoutes = require('./routes/dependency');
+app.use('/api/v1/dependency', dependencyRoutes);
 
 if (process.env.NODE_ENV === 'production') {
     // Start folder
@@ -19,10 +21,10 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-const PORT = process.env.PORT || 5050;
 
 
 async function start() {
+    const PORT = process.env.PORT || 5050;
     try {
          // start async function, like open DB connection
           app.listen(PORT, () =>
