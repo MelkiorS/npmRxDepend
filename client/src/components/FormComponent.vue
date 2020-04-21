@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <h1>Package dependency</h1>
+        <h1>show  NPN package dependency</h1>
         <p class="error" v-if="error">{{ error }}</p>
         <div class="create-post">
-            <label for="package-name">Package name</label>
+            <label for="package-name">package name </label>
             <input type="text" id="package-name" v-model="packageName">
             <button @click="checkDependency">Check</button>
         </div>
@@ -75,6 +75,7 @@
         margin-bottom: 15px;
         font-size: 22px;
         font-weight: 700;
+        cursor: pointer;
     }
 
 </style>
