@@ -4,7 +4,7 @@
   "description": "clear frame for SPA+NODE",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production  node index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
     "server": "nodemon index.js",
     "client": "npm run serve --prefix ../client",
     "client:build": "npm run build --prefix ../client",
