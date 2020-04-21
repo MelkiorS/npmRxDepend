@@ -24,13 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 async function start() {
-let PORT = process.env.PORT || 5000;
-
-/*    if(process.env.NODE_ENV === 'development'){
-        PORT = 5000;
-    } else {
-        PORT = process.env.PORT || 5050;
-    }*/
+let PORT = process.env.PORT || 5050;
     try {
          // start async function, like open DB connection
           app.listen(PORT, () =>

@@ -1,15 +1,11 @@
-const request = require('request');
-const npmUrl = 'http://registry.npmjs.org/';
+const axios = require('axios');
+const npmUrl = 'https://registry.npmjs.org/';
 
-module.exports.getByPackageName = async function(req, res) {
-    request.get(`${npmUrl}${req.params.package}`, { json: true }, (err, res, body) => {
-        if (err) {
-            return console.log(err);
-        }
-
-
-        body.data.map(dep => {
-            console.log(`${dep}`);
-        });
-    });
+module.exports.getByPackageName = async function (serverReq, serverResp) {
+   axios.get(npmUrl + serverReq.params.package)
+        .then(resp => {
+            const lastVersion = Object.keys(resp.data.versions).pop();
+            const dependenciesObj  = resp.data.versions[lastVersion].dependencies;
+            serverResp.status(200).json(dependenciesObj);
+        }).catch(serverResp.status(500));
 }
