@@ -5,7 +5,6 @@ const url = 'api/v1/dependency/';
 export default class DependencyService {
     // Get posts
     static async getDependency(name) {
-        console.log(`name = ${name}`);
         return await Vue.axios.get(url + name)
             .then(function (rsp) {
                 console.log(rsp.data);

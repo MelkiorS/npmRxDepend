@@ -7,14 +7,12 @@
             <input type="text" id="package-name" v-model="packageName">
             <button @click="checkDependency">Check</button>
         </div>
-        <div class="post-container">
-      <!--      <div class="post"
-                 v-for="post in posts"
-                 :key="post._id"
-                 @dblclick="deletePost(post._id)">
-                <p class="text">{{ post.text }}</p>
-            </div>-->
-        </div>
+        <ul class="post-container">
+            <li @click="checkDependDependency(name)" class="dependencies"
+                    v-for="(version, name) in dependencies" :key = name>
+                    {{ name }}: {{ version }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -32,8 +30,7 @@
         },
         async created(){
             try {
-                // this.posts = await PostService.getPosts();
-                // console.log(this.posts);
+               //TODO for future =)
             } catch (e) {
                 this.error = e.message;
             }
@@ -41,7 +38,13 @@
         methods: {
             async checkDependency() {
                this.dependencies = await DependencyService.getDependency(this.packageName);
-            }
+            },
+            async checkDependDependency(packageName) {
+               this.packageName = packageName;
+               this.dependencies = [];
+               this.dependencies = await DependencyService.getDependency(this.packageName);
+            },
+
         }
     }
 </script>
@@ -60,27 +63,18 @@
         margin-bottom: 15px;
     }
 
-    div.post {
+    ul {
+        list-style-type: none;
+    }
+
+    li {
         position: relative;
         border: 1px solid #5bd658;
         background-color: #bcffb8;
         padding: 10px 10px 30px 10px;
         margin-bottom: 15px;
-    }
-
-    div.created-at{
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 5px 15px 5px 15px;
-        background-color: darkgreen;
-        color: white;
-        font-size: 13px;
-    }
-
-    p.text {
         font-size: 22px;
         font-weight: 700;
-        margin-bottom: 0;
     }
+
 </style>
