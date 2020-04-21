@@ -1,3 +1,6 @@
+show npm dependencies for npm package name
+deployed on https://npm-dependency.herokuapp.com/
+
 # client
 
 ## Project setup
